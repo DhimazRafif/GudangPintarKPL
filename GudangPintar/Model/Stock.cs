@@ -6,23 +6,37 @@ namespace GudangPintar.Model
 {
     public class Stock
     {
-        private int itemid;
-        private string name {  get; set; }
-        private int quantity {  get; set; }
-        private double price {  get; set; }
-        private Category category;
-        private int notification_treshold {  get; set; }
-        private User created_by;
-        private DateTime created_at;
-        private DateTime updated_at;
+        public string NamaBarang { get; set; }
+        public Category Kategori { get; set; }
+        public int Jumlah { get; set; }
+        public double Harga { get; set; }
 
-        public Stock(string name, int quantity, double price, Category category, int notification_treshold)
+        public Stock(string nama, Category kategori, int jumlah, double harga)
         {
-            this.name = name;
-            this.quantity = quantity;
-            this.price = price;
-            this.category = category;
-            this.notification_treshold = notification_treshold;
+            NamaBarang = nama;
+            Kategori = kategori;
+            Jumlah = jumlah;
+            Harga = harga;
+        }
+
+        public void TambahStok(int jumlah)
+        {
+            Jumlah += jumlah;
+        }
+
+        public void KurangiStok(int jumlah)
+        {
+            if (Jumlah >= jumlah)
+                Jumlah -= jumlah;
+            else
+                Console.WriteLine("Stok tidak cukup!");
+        }
+
+        public void EditStock(string nama, Category kategori, double harga)
+        {
+            NamaBarang = nama;
+            Kategori = kategori;
+            Harga = harga;
         }
     }
 }

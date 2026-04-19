@@ -1,23 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GudangPintar.Model
 {
     public class StockHistory
     {
-        private int historyid;
-        private Stock stock {  get; set; }
-        private int changed_quantity {  get; set; }
-        private User changed_by_user { get; set; }
-        private DateTime change_date { get; set; }
+        public string NamaBarang { get; set; }
+        public string Aksi { get; set; }
+        public int Jumlah { get; set; }
+        public string UserPelaku { get; set; }
+        public DateTime Tanggal { get; set; }
 
-        public StockHistory(Stock stock, int changed_quantity, User changed_by_user, DateTime change_date)
+        public StockHistory(string namaBarang, string aksi, int jumlah, string user)
         {
-            this.stock = stock;
-            this.changed_quantity = changed_quantity;
-            this.changed_by_user = changed_by_user;
-            this.change_date = change_date;
+            NamaBarang = namaBarang;
+            Aksi = aksi;
+            Jumlah = jumlah;
+            UserPelaku = user;
+            Tanggal = DateTime.Now;
+        }
+
+        public void Tampilkan()
+        {
+            Console.WriteLine($"{Tanggal} | {NamaBarang} | {Aksi} {Jumlah} | Oleh: {UserPelaku}");
         }
     }
 }
